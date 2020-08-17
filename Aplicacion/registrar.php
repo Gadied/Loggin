@@ -11,7 +11,7 @@ $json=array();
 		
 		$conexion=mysqli_connect($hostname,$username,$password,$database);
 		
-		$consulta="INSERT INTO usuarios(names, user, pwd) VALUES ('{$names}','{$user}' , '{$pwd}')";
+		$consulta="INSERT INTO usuarios(names, user, pwd) VALUES ('{$names}','{$user}','{$pwd}')";
 		$resultado=mysqli_query($conexion,$consulta);
 
        

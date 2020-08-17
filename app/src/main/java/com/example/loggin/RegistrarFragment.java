@@ -37,7 +37,7 @@ public class RegistrarFragment extends Fragment implements Response.Listener<JSO
         View vista = inflater.inflate(R.layout.fragment_registrar, container, false);
         txtUser = (EditText) vista.findViewById(R.id.txtuser);
         txtPwd = (EditText) vista.findViewById(R.id.txtpwd);
-        txtNames= (EditText) vista.findViewById(R.id.txtNames);
+        txtNames= (EditText) vista.findViewById(R.id.txtnames);
 
         btnSesion = (Button) vista.findViewById(R.id.btnsesion);
         btnRegistrar = (Button) vista.findViewById(R.id.btnregistrar);
@@ -69,7 +69,7 @@ public class RegistrarFragment extends Fragment implements Response.Listener<JSO
 
     @Override
     public void onResponse(JSONObject response) {
-        Toast.makeText(getContext(), "Se ha registrado corectamente " + txtUser.getText().toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Se ha registrado el usuario " + txtUser.getText().toString(), Toast.LENGTH_SHORT).show();
         limpiarCajas();
     }
 
@@ -89,6 +89,7 @@ public class RegistrarFragment extends Fragment implements Response.Listener<JSO
     }
 
     void registrar_usuario(){
+
         String url = "http://192.168.1.57/Aplicacion/registrar.php?names=" +txtNames.getText().toString()+"&user="+ txtUser.getText().toString() +
                 "&pwd=" + txtPwd.getText().toString();
 
