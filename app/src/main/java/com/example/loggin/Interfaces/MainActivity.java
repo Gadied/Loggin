@@ -28,18 +28,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-    //variable del fragment detalle
     DetallePersonaFragment detallePersonaFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer);
         navigationView = findViewById(R.id.navigationView);
-        //lo sgt se implementa luego de haber implementado NavigationView.OnNavigationItemSelectedListener
+
         navigationView.setNavigationItemSelectedListener(this);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
 
-        //cargar fragment principal en la actividad
+
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.container_fragment,new MainFragment());
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        //para cerrar automaticamente el menu
+
         drawerLayout.closeDrawer(GravityCompat.START);
         if(menuItem.getItemId() == R.id.home){
             fragmentManager = getSupportFragmentManager();
@@ -77,29 +77,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void enviarPersona(Persona persona) {
-        //gracias a hbaer implementado de la interface "iComunicaFragments" se tiene la implementacion del metodo enviarPersona
-        //o mejor dicho este metodo.
-        //Aqui se realiza toda la logica necesaria para poder realizar el envio
+
         detallePersonaFragment = new DetallePersonaFragment();
-        //objeto bundle para transportar la informacion
+
         Bundle bundleEnvio = new Bundle();
-        //se manda el objeto que le esta llegando:
+
         bundleEnvio.putSerializable("objeto",persona);
         detallePersonaFragment.setArguments(bundleEnvio);
 
-        //CArgar fragment en el activity
+
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.container_fragment, detallePersonaFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
-        /*
-         getSupportFragmentManager().beginTransaction()
-                 .replace(R.id.container_fragment, detallePersonaFragment)
-                 .addToBackStack(null).commit();
-        */
-        //***Luego pasar a programar al fragmentdetalle
+
     }
 
 

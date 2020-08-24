@@ -23,10 +23,10 @@ public class DetallePersonaFragment extends Fragment {
         View view = inflater.inflate(R.layout.detalle_persona_fragment,container,false);
         nombre = view.findViewById(R.id.nombre_detalle);
         imagen = view.findViewById(R.id.imagen_detalleid);
-        //Crear bundle para recibir el objeto enviado por parametro.
+
         Bundle objetoPersona = getArguments();
         Persona persona = null;;
-        //validacion para verificar si existen argumentos para mostrar
+
         if(objetoPersona !=null){
             persona = (Persona) objetoPersona.getSerializable("objeto");
             imagen.setImageResource(persona.getImagenid());
